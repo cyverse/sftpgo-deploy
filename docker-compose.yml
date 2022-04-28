@@ -1,0 +1,22 @@
+---
+version: "2.0"
+
+services:
+  sftpgo:
+    build:
+      context: .
+      dockerfile: sftpgo/Dockerfile
+    environment:
+      - IRODS_PROXY_USER="$IRODS_PROXY_USER"
+      - IRODS_PROXY_PASSWORD="$IRODS_PROXY_PASSWORD"
+      - IRODS_HOST="$IRODS_HOST"
+      - IRODS_PORT="$IRODS_PORT"
+      - IRODS_ZONE="$IRODS_ZONE"
+    ports:
+      - "$SFTP_PORT:$SFTP_PORT"
+      - "$SFTPGO_ADMIN_UI_PORT:$SFTPGO_ADMIN_UI_PORT"
+    volumes:
+      - "sftpgo_home_volume:$SFTPGO_VAULT"
+  
+volumes:
+  sftpgo_home_volume:
