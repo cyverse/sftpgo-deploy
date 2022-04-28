@@ -8,7 +8,7 @@ Update configuration parameters set in `config.inc`.
 ./build
 ```
 
-This builds `sftpgo-deploy` docker image. The docker image is based on `cyverse/sftpgo` image, which is built from `https://github.com/cyverse/sftpgo`.
+This builds `cyverse_datastore_sftpgo` docker image. The docker image is based on `cyverse/sftpgo` image, which is built from `https://github.com/cyverse/sftpgo`.
 
 ## Start
 
