@@ -18,6 +18,6 @@ FROM cyverse/sftpgo
 COPY --from=auth_builder /workspace/sftpgo-auth-irods/bin/sftpgo-auth-irods /usr/local/bin/
 COPY sftpgo/sftpgo.json.template /tmp/sftpgo.json.template
 COPY sftpgo/prep-config-json.sh /tmp/prep-config-json.sh
-RUN /tmp/prep-config-json.sh
+RUN /tmp/prep-config-json.sh /etc/sftpgo/sftpgo.json
 
 CMD ["sftpgo", "serve"]
