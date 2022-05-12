@@ -61,7 +61,7 @@
       }
     ],
     "max_auth_tries": 0,
-    "banner": "",
+    "banner": "Welcome to SFTP service for CyVerse DataStore!",
     "host_keys": [],
     "host_certificates": [],
     "host_key_algorithms": [],

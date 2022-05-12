@@ -25,6 +25,8 @@ COPY sftpgo/sftpgo.json.template /tmp/sftpgo.json.template
 COPY sftpgo/prep-config-json.sh /usr/local/bin/
 RUN prep-config-json.sh
 
+COPY sftpgo/host_keys/* /var/lib/sftpgo/
+
 # set setuid/setgid bits, since users may want to bind system ports (i.e., 22)
 USER root
 RUN chmod ug+s /usr/local/bin/sftpgo
