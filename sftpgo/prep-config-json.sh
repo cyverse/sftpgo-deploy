@@ -30,7 +30,7 @@ escape()
 
 expand_tmpl()
 {
-  cat <<EOF | sed --file - /tmp//tmp/sftpgo.json.template
+  cat <<EOF | sed --file - /tmp/sftpgo.json.template
 s/\$SFTP_PORT/$(escape $SFTP_PORT)/g
 s/\$SFTPGO_ADMIN_UI_PORT/$(escape $SFTPGO_ADMIN_UI_PORT)/g
 s/\$SFTPGO_VAULT/$(escape $SFTPGO_VAULT)/g
