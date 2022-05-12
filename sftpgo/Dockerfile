@@ -15,10 +15,14 @@ WORKDIR /workspace/sftpgo-auth-irods
 RUN make
 
 FROM cyverse/sftpgo
+
+ARG SFTP_PORT=2022
+ARG SFTPGO_ADMIN_UI_PORT=8080
+ARG SFTPGO_VAULT="/srv/sftpgo"
+
 COPY --from=auth_builder /workspace/sftpgo-auth-irods/bin/sftpgo-auth-irods /usr/local/bin/
 COPY sftpgo/sftpgo.json.template /tmp/sftpgo.json.template
-COPY sftpgo/prep-config-json.sh /tmp/prep-config-json.sh
-RUN chmod 755 /tmp/prep-config-json.sh
-RUN /tmp/prep-config-json.sh
+COPY sftpgo/prep-config-json.sh /usr/local/bin/
+RUN prep-config-json.sh
 
 CMD ["sftpgo", "serve"]
