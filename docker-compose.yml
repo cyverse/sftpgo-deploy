@@ -13,6 +13,8 @@ services:
     environment:
       - "SFTPGO_DEFAULT_ADMIN_USERNAME=$SFTPGO_ADMIN_USER"
       - "SFTPGO_DEFAULT_ADMIN_PASSWORD=$SFTPGO_ADMIN_PASSWORD"
+      - "SFTPGO_LOG_DIR=$SFTPGO_LOG_DIR"
+      - "SFTPGO_LOG_FILE_PATH=$SFTPGO_LOG_DIR/sftpgo.log"
       - "IRODS_PROXY_USER=$IRODS_PROXY_USER"
       - "IRODS_PROXY_PASSWORD=$IRODS_PROXY_PASSWORD"
       - "IRODS_HOST=$IRODS_HOST"
@@ -22,7 +24,12 @@ services:
       - "$SFTP_PORT:$SFTP_PORT"
       - "$SFTPGO_ADMIN_UI_PORT:$SFTPGO_ADMIN_UI_PORT"
     volumes:
-      - "sftpgo_home_volume:$SFTPGO_VAULT"
+      - type: volume
+        source: sftpgo_home_volume
+        target: "$SFTPGO_VAULT"
+      - type: bind
+        source: "$SFTPGO_LOG_DIR"
+        target: "$SFTPGO_LOG_DIR"
   
 volumes:
   sftpgo_home_volume:

@@ -8,6 +8,7 @@ export SFTPGO_ADMIN_UI_PORT=8080
 export SFTPGO_VAULT="/srv/sftpgo"
 export SFTPGO_ADMIN_USER="sftpgo-admin"
 export SFTPGO_ADMIN_PASSWORD=""
+export SFTPGO_LOG_DIR="/var/log/sftpgo"
 # iRODS Setting
 export IRODS_PROXY_USER=""
 export IRODS_PROXY_PASSWORD=""

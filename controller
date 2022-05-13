@@ -32,6 +32,8 @@ main()
 
   case "$action" in
     start)
+      mkdir -p "$SFTPGO_LOG_DIR"
+
       docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" up -d
       ;;
     stop)
