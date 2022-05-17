@@ -23,7 +23,7 @@
       "driver": "memory",
       "ban_time": 30,
       "ban_time_increment": 50,
-      "threshold": 15,
+      "threshold": 6,
       "score_invalid": 2,
       "score_valid": 1,
       "score_limit_exceeded": 3,
