@@ -31,6 +31,7 @@ COPY sftpgo/blacklist.json /var/lib/sftpgo/
 # set setuid/setgid bits, since users may want to bind system ports (i.e., 22)
 USER root
 RUN chmod ug+s /usr/local/bin/sftpgo
+RUN chmod ug+s /usr/local/bin/sftpgo-auth-irods
 USER 1000:1000
 
 CMD ["sftpgo", "serve"]
