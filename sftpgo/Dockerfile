@@ -19,6 +19,7 @@ FROM cyverse/sftpgo
 ARG SFTP_PORT=2022
 ARG SFTPGO_ADMIN_UI_PORT=8080
 ARG SFTPGO_VAULT="/srv/sftpgo"
+ENV TZ="America/Phoenix"
 
 COPY --from=auth_builder /workspace/sftpgo-auth-irods/bin/sftpgo-auth-irods /usr/local/bin/
 COPY sftpgo/sftpgo.json.template /tmp/sftpgo.json.template
