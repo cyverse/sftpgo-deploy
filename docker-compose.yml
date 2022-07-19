@@ -20,6 +20,7 @@ services:
       - "IRODS_HOST=$IRODS_HOST"
       - "IRODS_PORT=$IRODS_PORT"
       - "IRODS_ZONE=$IRODS_ZONE"
+      - "IRODS_SHARED=$IRODS_SHARED"
     ports:
       - "$SFTP_PORT:$SFTP_PORT"
       - "$SFTPGO_ADMIN_UI_PORT:$SFTPGO_ADMIN_UI_PORT"
