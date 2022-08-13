@@ -12,6 +12,7 @@ RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/archive/refs/heads/main
       mv sftpgo-auth-irods-main sftpgo-auth-irods
 
 WORKDIR /workspace/sftpgo-auth-irods
+RUN go mod tidy
 RUN make
 
 FROM cyverse/sftpgo
