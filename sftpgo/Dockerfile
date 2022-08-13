@@ -4,7 +4,7 @@ RUN mkdir -p /workspace
 WORKDIR /workspace
 
 RUN apt-get update && \
-      apt-get install --no-install-recommends -y unzip make && \
+      apt-get install --no-install-recommends -y unzip make git && \
       rm -rf /var/lib/apt/lists/*
 
 RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/archive/refs/heads/main.zip --output sftpgo-auth-irods.zip && \
