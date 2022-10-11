@@ -12,9 +12,10 @@ RUN apt-get update && \
 
 RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.1.3/sftpgo-auth-irods-v0.1.3-linux-amd64.tar.gz --output sftpgo-auth-irods.tar.gz && \
       mkdir sftpgo-auth-irods && \
-      mv sftpgo-auth-irods.tar.gz sftpgo-auth-irods && \
-      tar zxvf sftpgo-auth-irods.tar.gz && \
-      cp sftpgo-auth-irods/sftpgo-auth-irods /usr/local/bin/
+      tar zxvf sftpgo-auth-irods.tar.gz -C sftpgo-auth-irods && \
+      rm sftpgo-auth-irods.tar.gz && \
+      cp sftpgo-auth-irods/sftpgo-auth-irods /usr/local/bin/ && \
+      rm -rf sftpgo-auth-irods
 
 COPY sftpgo/sftpgo.json.template /tmp/sftpgo.json.template
 COPY sftpgo/prep-config-json.sh /usr/local/bin/
