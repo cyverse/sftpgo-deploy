@@ -5,6 +5,10 @@ ARG SFTPGO_ADMIN_UI_PORT=8080
 ARG SFTPGO_VAULT="/srv/sftpgo"
 ENV TZ="America/Phoenix"
 
+RUN apt-get update && \
+      apt-get install --no-install-recommends -y curl && \
+      rm -rf /var/lib/apt/lists/*
+
 RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.1.3/sftpgo-auth-irods-v0.1.3-linux-amd64.tar.gz --output sftpgo-auth-irods.tar.gz && \
       mkdir sftpgo-auth-irods && \
       mv sftpgo-auth-irods.tar.gz sftpgo-auth-irods && \
