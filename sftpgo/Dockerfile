@@ -1,20 +1,3 @@
-FROM golang:1.18-bullseye as auth_builder
-
-RUN mkdir -p /workspace
-WORKDIR /workspace
-
-RUN apt-get update && \
-      apt-get install --no-install-recommends -y unzip make git && \
-      rm -rf /var/lib/apt/lists/*
-
-RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/archive/refs/heads/main.zip --output sftpgo-auth-irods.zip && \
-      unzip sftpgo-auth-irods.zip && \
-      mv sftpgo-auth-irods-main sftpgo-auth-irods
-
-WORKDIR /workspace/sftpgo-auth-irods
-RUN go mod tidy
-RUN make
-
 FROM cyverse/sftpgo
 
 ARG SFTP_PORT=2022
@@ -22,7 +5,12 @@ ARG SFTPGO_ADMIN_UI_PORT=8080
 ARG SFTPGO_VAULT="/srv/sftpgo"
 ENV TZ="America/Phoenix"
 
-COPY --from=auth_builder /workspace/sftpgo-auth-irods/bin/sftpgo-auth-irods /usr/local/bin/
+RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.1.3/sftpgo-auth-irods-v0.1.3-linux-amd64.tar.gz --output sftpgo-auth-irods.tar.gz && \
+      mkdir sftpgo-auth-irods && \
+      mv sftpgo-auth-irods.tar.gz sftpgo-auth-irods && \
+      tar zxvf sftpgo-auth-irods.tar.gz && \
+      cp sftpgo-auth-irods/sftpgo-auth-irods /usr/local/bin/
+
 COPY sftpgo/sftpgo.json.template /tmp/sftpgo.json.template
 COPY sftpgo/prep-config-json.sh /usr/local/bin/
 RUN prep-config-json.sh
