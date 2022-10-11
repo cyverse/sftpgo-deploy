@@ -10,7 +10,6 @@ RUN apt-get update && \
       apt-get install --no-install-recommends -y curl && \
       rm -rf /var/lib/apt/lists/*
 
-USER 1000:1000
 RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.1.3/sftpgo-auth-irods-v0.1.3-linux-amd64.tar.gz --output sftpgo-auth-irods.tar.gz && \
       mkdir sftpgo-auth-irods && \
       mv sftpgo-auth-irods.tar.gz sftpgo-auth-irods && \
@@ -25,7 +24,6 @@ COPY sftpgo/host_keys/* /var/lib/sftpgo/
 COPY sftpgo/blacklist.json /var/lib/sftpgo/
 
 # set setuid/setgid bits, since users may want to bind system ports (i.e., 22)
-USER root
 RUN chmod ug+s /usr/local/bin/sftpgo
 RUN chmod ug+s /usr/local/bin/sftpgo-auth-irods
 USER 1000:1000
