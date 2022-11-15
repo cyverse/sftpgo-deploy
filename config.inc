@@ -6,8 +6,9 @@ export ENV_NAME=cyverse_datastore_sftp
 export SFTP_PORT=2022
 export SFTPGO_ADMIN_UI_PORT=8080
 export SFTPGO_VAULT="/srv/sftpgo"
+export SFTPGO_HOME_PATH="$SFTPGO_VAULT/data"
 export SFTPGO_ADMIN_USER="sftpgo-admin"
-export SFTPGO_ADMIN_PASSWORD=""
+export SFTPGO_ADMIN_PASSWORD="sftpgo-admin-test"
 export SFTPGO_LOG_DIR="/var/log/sftpgo"
 # iRODS Setting
 export IRODS_PROXY_USER=""

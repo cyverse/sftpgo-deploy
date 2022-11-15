@@ -34,10 +34,18 @@ main()
     start)
       mkdir -p "$SFTPGO_LOG_DIR"
 
-      docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" up -d
+      if ! command -v docker-compose > /dev/null; then
+        docker compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" up -d
+      else
+        docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" up -d
+      fi
       ;;
     stop)
-      docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" down --remove-orphans
+      if ! command -v docker-compose > /dev/null; then
+        docker compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" down --remove-orphans
+      else
+        docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" down --remove-orphans
+      fi
       ;;
     *)
       printf 'Unknown command "%s"\n' "$action" >&2
