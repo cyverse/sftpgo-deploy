@@ -5,7 +5,7 @@ export ENV_NAME=cyverse_datastore_sftp
 # SFTPGo setting
 export WEBDAV_PORT=8080
 export SFTP_PORT=2022
-export SFTPGO_ADMIN_UI_PORT=8080
+export SFTPGO_ADMIN_UI_PORT=8022
 export SFTPGO_VAULT="/srv/sftpgo"
 export SFTPGO_HOME_PATH="$SFTPGO_VAULT/data"
 export SFTPGO_ADMIN_USER="sftpgo-admin"
