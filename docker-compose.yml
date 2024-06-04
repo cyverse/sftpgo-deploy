@@ -3,7 +3,6 @@ version: "3.2"
 
 services:
   sftpgo:
-    restart: unless-stopped
     build:
       context: .
       dockerfile: sftpgo/Dockerfile
@@ -42,7 +41,7 @@ services:
         source: sftpgo_home_volume
         target: "$SFTPGO_VAULT"
       - type: bind
-        source: "/home/debian/sftpgo-deploy/log/"
+        source: "$SFTPGO_LOG_DIR"
         target: "$SFTPGO_LOG_DIR"
 
 volumes:
