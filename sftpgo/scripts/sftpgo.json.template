@@ -91,7 +91,7 @@
         "apply_proxy_config": true
       }
     ],
-    "max_auth_tries": 0,
+    "max_auth_tries": 12,
     "host_keys": [],
     "host_certificates": [],
     "host_key_algorithms": [],

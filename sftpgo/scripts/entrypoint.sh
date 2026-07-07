@@ -22,7 +22,7 @@ ADMIN_API="http://localhost:${SFTPGO_ADMIN_UI_PORT}"
 
 wait_for_api() {
   local retries=30
-  until curl -sf "${ADMIN_API}/api/v2/version" -H "Authorization: Bearer $(get_token)" > /dev/null 2>&1; do
+  until curl -sf "${ADMIN_API}/healthz" > /dev/null 2>&1; do
     retries=$((retries - 1))
     if [ "$retries" -le 0 ]; then
       echo "ERROR: SFTPGo REST API did not become ready in time" >&2
@@ -74,7 +74,6 @@ TOKEN=$(get_token)
 enable_api_key_auth "$TOKEN"
 
 log "Issuing API key..."
-TOKEN=$(get_token)
 API_KEY=$(issue_api_key "$TOKEN")
 
 if [ -z "$API_KEY" ]; then
