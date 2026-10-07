@@ -5,6 +5,8 @@ ARG SFTP_PORT=2022
 ARG SFTPGO_ADMIN_UI_PORT=8022
 ARG SFTPGO_VAULT="/srv/sftpgo"
 ARG SFTPGO_HOME_PATH="/srv/sftpgo/data"
+ARG SFTPGO_LOG_DIR="/var/log/sftpgo"
+ARG SFTPGO_AUTH_CACHE_TIME=300
 ARG IRODS_PROXY_USER=rods
 ARG IRODS_PROXY_PASSWORD=rods
 ARG IRODS_HOST=ies
@@ -18,6 +20,7 @@ ARG IRODS_SSL_ALGORITHM="AES-256-CBC"
 ARG IRODS_SSL_KEY_SIZE=32
 ARG IRODS_SSL_SALT_SIZE=8
 ARG IRODS_SSL_HASH_ROUNDS=16
+ARG IRODS_SSL_VERIFY_SERVER=none
 ARG IRODS_SHARED=/iplant/home/shared
 ENV TZ="America/Phoenix"
 
@@ -28,7 +31,7 @@ RUN apt-get update && \
 
 # extract sftpgo-auth-irods
 RUN mkdir -p /tmp/sftpgo-auth-irods
-RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.2.0/sftpgo-auth-irods-v0.2.0-linux-amd64.tar.gz --output /tmp/sftpgo-auth-irods/sftpgo-auth-irods.tar.gz
+RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.2.1/sftpgo-auth-irods-v0.2.1-linux-amd64.tar.gz --output /tmp/sftpgo-auth-irods/sftpgo-auth-irods.tar.gz
 RUN tar zxvf /tmp/sftpgo-auth-irods/sftpgo-auth-irods.tar.gz -C /tmp/sftpgo-auth-irods && cp /tmp/sftpgo-auth-irods/sftpgo-auth-irods /usr/local/bin && rm -rf /tmp/sftpgo-auth-irods
 
 COPY sftpgo/scripts/sftpgo.json.template /tmp/sftpgo.json.template

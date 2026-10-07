@@ -9,6 +9,8 @@
 # SFTPGO_ADMIN_UI_PORT            The TCP port for web admin service
 # SFTPGO_VAULT                    The local path for storing user data and log
 # SFTPGO_HOME_PATH                The local path for storing user home data
+# SFTPGO_LOG_DIR                  The local path the external auth hook writes its log to
+# SFTPGO_AUTH_CACHE_TIME          The seconds SFTPGo may reuse a successful authentication for
 # IRODS_PROXY_USER                The proxy user for iRODS to provide authentication of users
 # IRODS_PROXY_PASSWORD            The password of the proxy user for iRODS
 # IRODS_HOST                      The iRODS hostname
@@ -20,6 +22,7 @@
 # IRODS_SSL_KEY_SIZE              The iRODS SSL encryption sey size
 # IRODS_SSL_SALT_SIZE             The iRODS SSL encryption salt size
 # IRODS_SSL_HASH_ROUNDS           The iRODS SSL encryption hash rounds
+# IRODS_SSL_VERIFY_SERVER         The iRODS server certificate verification, 'none', 'cert', or 'hostname'
 # IRODS_SHARED                    The iRODS shared directory path (e.g., /iplant/home/public or /iplant/home/shared)
 
 
@@ -50,6 +53,8 @@ s/\$SFTP_PORT/$(escape $SFTP_PORT)/g
 s/\$SFTPGO_ADMIN_UI_PORT/$(escape $SFTPGO_ADMIN_UI_PORT)/g
 s/\$SFTPGO_VAULT/$(escape $SFTPGO_VAULT)/g
 s/\$SFTPGO_HOME_PATH/$(escape $SFTPGO_HOME_PATH)/g
+s/\$SFTPGO_LOG_DIR/$(escape $SFTPGO_LOG_DIR)/g
+s/\$SFTPGO_AUTH_CACHE_TIME/$(escape $SFTPGO_AUTH_CACHE_TIME)/g
 s/\$IRODS_PROXY_USER/$(escape $IRODS_PROXY_USER)/g
 s/\$IRODS_PROXY_PASSWORD/$(escape $IRODS_PROXY_PASSWORD)/g
 s/\$IRODS_HOST/$(escape $IRODS_HOST)/g
@@ -63,6 +68,7 @@ s/\$IRODS_SSL_ALGORITHM/$(escape $IRODS_SSL_ALGORITHM)/g
 s/\$IRODS_SSL_KEY_SIZE/$(escape $IRODS_SSL_KEY_SIZE)/g
 s/\$IRODS_SSL_SALT_SIZE/$(escape $IRODS_SSL_SALT_SIZE)/g
 s/\$IRODS_SSL_HASH_ROUNDS/$(escape $IRODS_SSL_HASH_ROUNDS)/g
+s/\$IRODS_SSL_VERIFY_SERVER/$(escape $IRODS_SSL_VERIFY_SERVER)/g
 s/\$IRODS_SHARED/$(escape $IRODS_SHARED)/g
 EOF
 }
