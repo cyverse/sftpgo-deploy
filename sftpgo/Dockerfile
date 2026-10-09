@@ -22,6 +22,7 @@ ARG IRODS_SSL_SALT_SIZE=8
 ARG IRODS_SSL_HASH_ROUNDS=16
 ARG IRODS_SSL_VERIFY_SERVER=none
 ARG IRODS_SHARED=/iplant/home/shared
+ARG IRODS_POOL_ENDPOINT=
 ENV TZ="America/Phoenix"
 
 USER root
@@ -31,7 +32,7 @@ RUN apt-get update && \
 
 # extract sftpgo-auth-irods
 RUN mkdir -p /tmp/sftpgo-auth-irods
-RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.2.1/sftpgo-auth-irods-v0.2.1-linux-amd64.tar.gz --output /tmp/sftpgo-auth-irods/sftpgo-auth-irods.tar.gz
+RUN curl -L https://github.com/cyverse/sftpgo-auth-irods/releases/download/v0.2.2/sftpgo-auth-irods-v0.2.2-linux-amd64.tar.gz --output /tmp/sftpgo-auth-irods/sftpgo-auth-irods.tar.gz
 RUN tar zxvf /tmp/sftpgo-auth-irods/sftpgo-auth-irods.tar.gz -C /tmp/sftpgo-auth-irods && cp /tmp/sftpgo-auth-irods/sftpgo-auth-irods /usr/local/bin && rm -rf /tmp/sftpgo-auth-irods
 
 COPY sftpgo/scripts/sftpgo.json.template /tmp/sftpgo.json.template

@@ -30,9 +30,9 @@ main()
   . "$baseDir/$cfg"
 
   if ! command -v docker-compose > /dev/null; then
-    docker compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" build
+    docker compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" build --no-cache
   else
-    docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" build
+    docker-compose --file "$baseDir"/docker-compose.yml --project-name "$ENV_NAME" build --no-cache
   fi
 }
 

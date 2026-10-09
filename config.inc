@@ -39,3 +39,5 @@ export IRODS_SSL_HASH_ROUNDS=16
 # where the connection is encrypted and the server certificate is verifiable.
 export IRODS_SSL_VERIFY_SERVER="none"
 export IRODS_SHARED="/iplant/home/shared"
+# irodsfs-pool endpoint (e.g., "tcp://host:port", "unix:///path/to/socket"). Leave empty to connect to iRODS directly
+export IRODS_POOL_ENDPOINT=""

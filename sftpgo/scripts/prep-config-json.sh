@@ -24,6 +24,7 @@
 # IRODS_SSL_HASH_ROUNDS           The iRODS SSL encryption hash rounds
 # IRODS_SSL_VERIFY_SERVER         The iRODS server certificate verification, 'none', 'cert', or 'hostname'
 # IRODS_SHARED                    The iRODS shared directory path (e.g., /iplant/home/public or /iplant/home/shared)
+# IRODS_POOL_ENDPOINT             The irodsfs-pool service endpoint (e.g., tcp://host:port or unix:///path/to/socket), optional
 
 
 main()
@@ -70,6 +71,7 @@ s/\$IRODS_SSL_SALT_SIZE/$(escape $IRODS_SSL_SALT_SIZE)/g
 s/\$IRODS_SSL_HASH_ROUNDS/$(escape $IRODS_SSL_HASH_ROUNDS)/g
 s/\$IRODS_SSL_VERIFY_SERVER/$(escape $IRODS_SSL_VERIFY_SERVER)/g
 s/\$IRODS_SHARED/$(escape $IRODS_SHARED)/g
+s/\$IRODS_POOL_ENDPOINT/$(escape $IRODS_POOL_ENDPOINT)/g
 EOF
 }
 
